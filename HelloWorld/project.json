@@ -1,0 +1,28 @@
+{
+"version":1,
+"name":"Hello World",
+"build_definitions": [
+	{
+		"name":"Compile to object files",
+		"build_steps": [
+			{
+				"action":"compile",
+				"sys_include_dir":["ucrt","msvc"],
+				"inputs":["print.c","hello.c"],
+				"outputdir":"bin"
+			}
+		]
+	},
+	{
+		"name":"Link objects to produce executable",
+		"build_steps": [
+			{
+				"action":"link",
+				"args":["/defaultlib:msvcrt.lib"],
+				"inputs":["hello.o","print.o"],
+				"output":"hello.exe"
+			}
+		]
+	}
+]
+}

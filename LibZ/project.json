@@ -1,0 +1,28 @@
+{
+"version":1,
+"name":"LibZ",
+"build_definitions": [
+	{
+		"name":"Compile to object files",
+		"build_steps": [
+			{
+				"action":"compile",
+				"sys_include_dir":["ucrt","msvc"],
+				"inputs":["adler32.c", "deflate.c", "gzread.c", "inffast.c", "trees.c", "compress.c", "gzclose.c", "gzwrite.c", "inflate.c", "uncompr.c", "crc32.c", "gzlib.c", "infback.c", "inftrees.c", "zutil.c"],
+				"outputdir":"bin"
+			}
+		]
+	},
+	{
+		"name":"Link objects to produce library",
+		"build_steps": [
+			{
+				"action":"link",
+				"args":["/lib"],
+				"inputs":["adler32.o", "deflate.o", "gzread.o", "inffast.o", "trees.o", "compress.o", "gzclose.o", "gzwrite.o", "inflate.o", "uncompr.o", "crc32.o", "gzlib.o", "infback.o", "inftrees.o", "zutil.o"],
+				"output":"libz.lib"
+			}
+		]
+	}
+]
+}
