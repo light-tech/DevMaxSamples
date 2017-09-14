@@ -23,6 +23,24 @@
 				"output":"hello.exe"
 			}
 		]
+	},
+	{
+		"name":"Build Win32 Version",
+		"build_steps": [
+			{
+				"action":"compile",
+				"args":["-mrelax-all", "-fms-extensions", "-fms-compatibility", "-fms-compatibility-version=19.10.25017","-std=c++14", "-fdelayed-template-parsing","-fcxx-exceptions","-fexceptions","-x","c++"],
+				"sys_include_dir":["msvc", "ucrt", "um", "shared"],
+				"inputs":["HelloWorldWin32.cpp"],
+				"outputdir":"bin"
+			},
+			{
+				"action":"link",
+				"args":["/defaultlib:msvcrt.lib", "/subsystem:Windows", "User32.lib", "Gdi32.lib"],
+				"inputs":["HelloWorldWin32.o"],
+				"output":"HelloWorldWin32.exe"
+			}
+		]
 	}
 ]
 }
